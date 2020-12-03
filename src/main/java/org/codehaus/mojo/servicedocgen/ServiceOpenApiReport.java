@@ -32,23 +32,23 @@ import org.codehaus.mojo.servicedocgen.descriptor.ServicesDescriptor;
  * <code>classnameRegex</code>.</li>
  * <li>Analyzes the services from source-code (extract JavaDoc, etc.) and byte-code (resolve generic parameters, etc.)
  * and create intermediate meta-data as {@link ServicesDescriptor}.</li>
- * <li>Generates documentation from the collected meta-data (by default as HTML from a velocity template shipped with
- * this plugin but can be overridden via configuration parameters).</li>
+ * <li>Generates documentation from the collected meta-data (JSON from a velocity template shipped with this plugin but
+ * can be overridden via configuration parameters).</li>
  * </ol>
  * scan and analyze services from the current project via source-code and byte-code analysis. Creates
  *
  * @author hohwille
  */
-@Mojo(name = "generate", defaultPhase = LifecyclePhase.PREPARE_PACKAGE, requiresProject = true, requiresDirectInvocation = false, executionStrategy = "once-per-session", requiresDependencyCollection = ResolutionScope.COMPILE_PLUS_RUNTIME)
-public class ServiceDocGenReport extends ReportGen {
-  @Parameter(defaultValue = "Service-Documentation.html.vm")
+@Mojo(name = "openapi", defaultPhase = LifecyclePhase.PREPARE_PACKAGE, requiresProject = true, requiresDirectInvocation = false, executionStrategy = "once-per-session", requiresDependencyCollection = ResolutionScope.COMPILE_PLUS_RUNTIME)
+public class ServiceOpenApiReport extends ReportGen {
+  @Parameter(defaultValue = "OpenApi.json.vm")
   private String templateName;
 
   /**
    * The constructor.
    *
    */
-  public ServiceDocGenReport() {
+  public ServiceOpenApiReport() {
 
     super();
   }
